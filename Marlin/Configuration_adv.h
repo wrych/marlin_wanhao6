@@ -1177,7 +1177,7 @@
 //#define LCD_SHOW_E_TOTAL
 
 #if ENABLED(SHOW_BOOTSCREEN)
-#define BOOTSCREEN_TIMEOUT 4000 // (ms) Total Duration to display the boot screen(s)
+#define BOOTSCREEN_TIMEOUT 3000 // (ms) Total Duration to display the boot screen(s)
 #endif
 
 #if EITHER(SDSUPPORT, LCD_SET_PROGRESS_MANUALLY) && ANY(HAS_MARLINUI_U8GLIB, HAS_MARLINUI_HD44780, IS_TFTGLCD_PANEL)
@@ -1409,10 +1409,10 @@
 
 // Save many cycles by drawing a hollow frame or no frame on the Info Screen
 //#define XYZ_NO_FRAME
-//#define XYZ_HOLLOW_FRAME
+#define XYZ_HOLLOW_FRAME
 
 // Enable to save many cycles by drawing a hollow frame on Menu Screens
-//#define MENU_HOLLOW_FRAME
+#define MENU_HOLLOW_FRAME
 
 // A bigger font is available for edit items. Costs 3120 bytes of PROGMEM.
 // Western only. Not available for Cyrillic, Kana, Turkish, Greek, or Chinese.
@@ -2140,7 +2140,7 @@
  * Requires NOZZLE_PARK_FEATURE.
  * This feature is required for the default FILAMENT_RUNOUT_SCRIPT.
  */
-//#define ADVANCED_PAUSE_FEATURE
+#define ADVANCED_PAUSE_FEATURE
 #if ENABLED(ADVANCED_PAUSE_FEATURE)
 #define PAUSE_PARK_RETRACT_FEEDRATE 60       // (mm/s) Initial retract feedrate.
 #define PAUSE_PARK_RETRACT_LENGTH 2          // (mm) Initial retract. \
@@ -2319,7 +2319,7 @@
 #if AXIS_IS_TMC(X)
 #define X_CURRENT 800            // (mA) RMS current. Multiply by 1.414 for peak current.
 #define X_CURRENT_HOME X_CURRENT // (mA) RMS current for sensorless homing
-#define X_MICROSTEPS 16          // 0..256
+#define X_MICROSTEPS 256         // 0..256
 #define X_RSENSE 0.11
 #define X_CHAIN_POS -1 // <=0 : Not chained. 1 : MCU MOSI connected. 2 : Next in chain, ...
 #endif
@@ -2335,7 +2335,7 @@
 #if AXIS_IS_TMC(Y)
 #define Y_CURRENT 800
 #define Y_CURRENT_HOME Y_CURRENT
-#define Y_MICROSTEPS 16
+#define Y_MICROSTEPS 256
 #define Y_RSENSE 0.11
 #define Y_CHAIN_POS -1
 #endif
@@ -2351,7 +2351,7 @@
 #if AXIS_IS_TMC(Z)
 #define Z_CURRENT 800
 #define Z_CURRENT_HOME Z_CURRENT
-#define Z_MICROSTEPS 16
+#define Z_MICROSTEPS 256
 #define Z_RSENSE 0.11
 #define Z_CHAIN_POS -1
 #endif
@@ -2382,7 +2382,7 @@
 
 #if AXIS_IS_TMC(E0)
 #define E0_CURRENT 800
-#define E0_MICROSTEPS 16
+#define E0_MICROSTEPS 256
 #define E0_RSENSE 0.11
 #define E0_CHAIN_POS -1
 #endif
@@ -2599,7 +2599,7 @@
    *
    * Comment *_STALL_SENSITIVITY to disable sensorless homing for that axis.
    */
-//#define SENSORLESS_HOMING // StallGuard capable drivers only
+#define SENSORLESS_HOMING // StallGuard capable drivers only
 
 #if EITHER(SENSORLESS_HOMING, SENSORLESS_PROBING)
 // TMC2209: 0...255. TMC2130: -64...63
@@ -2637,7 +2637,7 @@
    * Enable M122 debugging command for TMC stepper drivers.
    * M122 S0/1 will enable continous reporting.
    */
-//#define TMC_DEBUG
+#define TMC_DEBUG
 
 /**
    * You can set your own advanced settings by filling in predefined functions.
