@@ -103,13 +103,13 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT -1
+#define SERIAL_PORT 0
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 0
+#define SERIAL_PORT_2 -1
 
 /**
  * This setting determines the communication speed of the printer.
@@ -521,9 +521,9 @@
     50.98, 50.98        \
   }
 #else
-#define DEFAULT_Kp 25.93
-#define DEFAULT_Ki 1.23
-#define DEFAULT_Kd 136.50
+#define DEFAULT_Kp 16.93
+#define DEFAULT_Ki 0.55
+#define DEFAULT_Kd 129.80
 #endif
 #endif // PIDTEMP
 
@@ -675,8 +675,8 @@
 #endif
 
 // Mechanical endstop with COM to ground and NC to Signal uses "false" here (most common setup).
-#define X_MIN_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
-#define Y_MIN_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
+#define X_MIN_ENDSTOP_INVERTING true        // Set to true to invert the logic of the endstop.
+#define Y_MIN_ENDSTOP_INVERTING true        // Set to true to invert the logic of the endstop.
 #define Z_MIN_ENDSTOP_INVERTING true        // Set to true to invert the logic of the endstop.
 #define X_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
 #define Y_MAX_ENDSTOP_INVERTING false       // Set to true to invert the logic of the endstop.
@@ -762,9 +762,9 @@
  * Override with M92
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
-#define DEFAULT_AXIS_STEPS_PER_UNIT  \
-  {                                  \
-    80.0395, 80.0395, 400.48, 412.23 \
+#define DEFAULT_AXIS_STEPS_PER_UNIT       \
+  {                                       \
+    1280.632, 1280.632, 12691.83, 6595.68 \
   }
 
 /**
@@ -774,7 +774,7 @@
  */
 #define DEFAULT_MAX_FEEDRATE \
   {                          \
-    300, 300, 5, 25          \
+    250, 250, 5, 25          \
   }
 
 //#define LIMITED_MAX_FR_EDITING        // Limit edit via M203 or LCD to DEFAULT_MAX_FEEDRATE * 2
@@ -793,14 +793,14 @@
  */
 #define DEFAULT_MAX_ACCELERATION \
   {                              \
-    3000, 3000, 100, 500         \
+    1500, 1500, 150, 750         \
   }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
 #if ENABLED(LIMITED_MAX_ACCEL_EDITING)
 #define MAX_ACCEL_EDIT_VALUES \
   {                           \
-    6000, 6000, 200, 20000    \
+    2000, 2000, 300, 1000     \
   } // ...or, set your own edit limits
 #endif
 
@@ -812,9 +812,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION 1500         // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION 1500 // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION 3000  // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION 800         // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION 500 // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION 1000 // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -883,7 +883,7 @@
 //#define Z_MIN_PROBE_USES_Z_MIN_ENDSTOP_PIN
 
 // Force the use of the probe for Z-axis homing
-//#define USE_PROBE_FOR_Z_HOMING
+#define USE_PROBE_FOR_Z_HOMING
 
 /**
  * Z_MIN_PROBE_PIN
@@ -938,7 +938,7 @@
 /**
  * The BLTouch probe uses a Hall effect sensor and emulates a servo.
  */
-//#define BLTOUCH
+#define BLTOUCH
 
 /**
  * Pressure sensor with a BLTouch-like interface
@@ -1027,7 +1027,7 @@
  */
 #define NOZZLE_TO_PROBE_OFFSET \
   {                            \
-    10, 10, 0                  \
+    0, -35, -1.50              \
   }
 
 // Most probes should stay away from the edges of the bed, but
@@ -1135,7 +1135,7 @@
 // @section extruder
 
 // For direct drive extruder v9 set to true, for geared extruder set to false.
-#define INVERT_E0_DIR true
+#define INVERT_E0_DIR false
 #define INVERT_E1_DIR false
 #define INVERT_E2_DIR false
 #define INVERT_E3_DIR false
@@ -1153,7 +1153,7 @@
 //#define Z_HOMING_HEIGHT  4      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
 // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
 
-//#define Z_AFTER_HOMING  10      // (mm) Height to move to after homing Z
+#define Z_AFTER_HOMING 10 // (mm) Height to move to after homing Z
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
@@ -1211,7 +1211,7 @@
  * RAMPS-based boards use SERVO3_PIN for the first runout sensor.
  * For other boards you may need to define FIL_RUNOUT_PIN, FIL_RUNOUT2_PIN, etc.
  */
-//#define FILAMENT_RUNOUT_SENSOR
+#define FILAMENT_RUNOUT_SENSOR
 #if ENABLED(FILAMENT_RUNOUT_SENSOR)
 #define FIL_RUNOUT_ENABLED_DEFAULT true // Enable the sensor on startup. Override with M412 followed by M500.
 #define NUM_RUNOUT_SENSORS 1            // Number of sensors, up to one per extruder. Define a FIL_RUNOUT#_PIN for each.
@@ -1226,13 +1226,13 @@
 // After a runout is detected, continue printing this length of filament
 // before executing the runout script. Useful for a sensor at the end of
 // a feed tube. Requires 4 bytes SRAM per sensor, plus 4 bytes overhead.
-//#define FILAMENT_RUNOUT_DISTANCE_MM 25
+#define FILAMENT_RUNOUT_DISTANCE_MM 400
 
 #ifdef FILAMENT_RUNOUT_DISTANCE_MM
 // Enable this option to use an encoder disc that toggles the runout pin
 // as the filament moves. (Be sure to set FILAMENT_RUNOUT_DISTANCE_MM
 // large enough to avoid false positives.)
-//#define FILAMENT_MOTION_SENSOR
+#define FILAMENT_MOTION_SENSOR
 #endif
 #endif
 
@@ -1277,14 +1277,14 @@
 //#define AUTO_BED_LEVELING_3POINT
 //#define AUTO_BED_LEVELING_LINEAR
 //#define AUTO_BED_LEVELING_BILINEAR
-//#define AUTO_BED_LEVELING_UBL
-#define MESH_BED_LEVELING
+#define AUTO_BED_LEVELING_UBL
+//#define MESH_BED_LEVELING
 
 /**
  * Normally G28 leaves leveling disabled on completion. Enable
  * this option to have G28 restore the prior leveling state.
  */
-//#define RESTORE_LEVELING_AFTER_G28
+#define RESTORE_LEVELING_AFTER_G28
 
 /**
  * Enable detailed logging of G28, G29, M48, etc.
@@ -1308,12 +1308,12 @@
 /**
    * Enable the G26 Mesh Validation Pattern tool.
    */
-//#define G26_MESH_VALIDATION
+#define G26_MESH_VALIDATION
 #if ENABLED(G26_MESH_VALIDATION)
 #define MESH_TEST_NOZZLE_SIZE 0.4  // (mm) Diameter of primary nozzle.
 #define MESH_TEST_LAYER_HEIGHT 0.2 // (mm) Default layer height for the G26 Mesh Validation Tool.
-#define MESH_TEST_HOTEND_TEMP 205  // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
-#define MESH_TEST_BED_TEMP 60      // (°C) Default bed temperature for the G26 Mesh Validation Tool.
+#define MESH_TEST_HOTEND_TEMP 220  // (°C) Default nozzle temperature for the G26 Mesh Validation Tool.
+#define MESH_TEST_BED_TEMP 95      // (°C) Default bed temperature for the G26 Mesh Validation Tool.
 #define G26_XY_FEEDRATE 20         // (mm/s) Feedrate for XY Moves for the G26 Mesh Validation Tool.
 #define G26_RETRACT_MULTIPLIER 1.0 // G26 Q (retraction) used by default between mesh test elements.
 #endif
@@ -1353,7 +1353,7 @@
 //========================= Unified Bed Leveling ============================
 //===========================================================================
 
-//#define MESH_EDIT_GFX_OVERLAY   // Display a graphics overlay while editing the mesh
+#define MESH_EDIT_GFX_OVERLAY // Display a graphics overlay while editing the mesh
 
 #define MESH_INSET 1         // Set Mesh bounds as an inset region of the bed
 #define GRID_MAX_POINTS_X 10 // Don't use more than 15 points per axis, implementation limited.
@@ -1392,7 +1392,7 @@
 #endif
 
 // Add a menu item to move between bed corners for manual bed adjustment
-//#define LEVEL_BED_CORNERS
+#define LEVEL_BED_CORNERS
 
 #if ENABLED(LEVEL_BED_CORNERS)
 #define LEVEL_CORNERS_INSET_LFRB \
@@ -1430,7 +1430,7 @@
 // - Move the Z probe (or nozzle) to a defined XY point before Z Homing.
 // - Prevent Z homing when the Z probe is outside bed area.
 //
-//#define Z_SAFE_HOMING
+#define Z_SAFE_HOMING
 
 #if ENABLED(Z_SAFE_HOMING)
 #define Z_SAFE_HOMING_X_POINT X_CENTER // X point for Z homing
@@ -1438,7 +1438,7 @@
 #endif
 
 // Homing speeds (mm/min)
-#define HOMING_FEEDRATE_XY (50 * 60)
+#define HOMING_FEEDRATE_XY (10 * 60)
 #define HOMING_FEEDRATE_Z (4 * 60)
 
 // Validate that endstops are triggered on homing moves
@@ -1822,7 +1822,7 @@
 // Use this option to override the number of step signals required to
 // move between next/prev menu items.
 //
-#define ENCODER_STEPS_PER_MENU_ITEM 1
+#define ENCODER_STEPS_PER_MENU_ITEM 4
 
 /**
  * Encoder Direction Options
@@ -1839,7 +1839,7 @@
 //
 //  Set this option if CLOCKWISE causes values to DECREASE
 //
-#define REVERSE_ENCODER_DIRECTION
+//#define REVERSE_ENCODER_DIRECTION
 
 //
 // This option reverses the encoder direction for navigating LCD menus.
