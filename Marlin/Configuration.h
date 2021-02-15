@@ -443,7 +443,7 @@
 #define TEMP_SENSOR_7 0
 #define TEMP_SENSOR_BED 1
 #define TEMP_SENSOR_PROBE 0
-#define TEMP_SENSOR_CHAMBER 0
+#define TEMP_SENSOR_CHAMBER 998
 
 // Dummy thermistor constant temperature readings, for use with 998 and 999
 #define DUMMY_THERMISTOR_998_VALUE 25
@@ -1153,7 +1153,7 @@
 //#define Z_HOMING_HEIGHT  4      // (mm) Minimal Z height before homing (G28) for Z clearance above the bed, clamps, ...
 // Be sure to have this much clearance over your Z_MAX_POS to prevent grinding.
 
-#define Z_AFTER_HOMING 10 // (mm) Height to move to after homing Z
+#define Z_AFTER_HOMING 5 // (mm) Height to move to after homing Z
 
 // Direction of endstops when homing; 1=MAX, -1=MIN
 // :[-1,1]
@@ -1164,7 +1164,7 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 193.0
+#define X_BED_SIZE 196.0
 #define Y_BED_SIZE 183.0
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
@@ -1355,8 +1355,8 @@
 
 #define MESH_EDIT_GFX_OVERLAY // Display a graphics overlay while editing the mesh
 
-#define MESH_INSET 1         // Set Mesh bounds as an inset region of the bed
-#define GRID_MAX_POINTS_X 10 // Don't use more than 15 points per axis, implementation limited.
+#define MESH_INSET 1        // Set Mesh bounds as an inset region of the bed
+#define GRID_MAX_POINTS_X 7 // Don't use more than 15 points per axis, implementation limited.
 #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
 #define UBL_MESH_EDIT_MOVES_Z   // Sophisticated users prefer no movement of nozzle
