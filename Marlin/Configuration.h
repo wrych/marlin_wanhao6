@@ -443,7 +443,7 @@
 #define TEMP_SENSOR_7 0
 #define TEMP_SENSOR_BED 1
 #define TEMP_SENSOR_PROBE 0
-#define TEMP_SENSOR_CHAMBER 998
+#define TEMP_SENSOR_CHAMBER 1
 
 // Dummy thermistor constant temperature readings, for use with 998 and 999
 #define DUMMY_THERMISTOR_998_VALUE 25
@@ -521,9 +521,9 @@
     50.98, 50.98        \
   }
 #else
-#define DEFAULT_Kp 16.93
-#define DEFAULT_Ki 0.55
-#define DEFAULT_Kd 129.80
+#define DEFAULT_Kp 24.63
+#define DEFAULT_Ki 1.10
+#define DEFAULT_Kd 138.24
 #endif
 #endif // PIDTEMP
 
@@ -793,7 +793,7 @@
  */
 #define DEFAULT_MAX_ACCELERATION \
   {                              \
-    1500, 1500, 150, 750         \
+    2000, 2000, 200, 1000        \
   }
 
 //#define LIMITED_MAX_ACCEL_EDITING     // Limit edit via M201 or LCD to DEFAULT_MAX_ACCELERATION * 2
@@ -812,9 +812,9 @@
  *   M204 R    Retract Acceleration
  *   M204 T    Travel Acceleration
  */
-#define DEFAULT_ACCELERATION 800         // X, Y, Z and E acceleration for printing moves
-#define DEFAULT_RETRACT_ACCELERATION 500 // E acceleration for retracts
-#define DEFAULT_TRAVEL_ACCELERATION 1000 // X, Y, Z acceleration for travel (non printing) moves
+#define DEFAULT_ACCELERATION 1000        // X, Y, Z and E acceleration for printing moves
+#define DEFAULT_RETRACT_ACCELERATION 700 // E acceleration for retracts
+#define DEFAULT_TRAVEL_ACCELERATION 1500 // X, Y, Z acceleration for travel (non printing) moves
 
 /**
  * Default Jerk limits (mm/s)
@@ -1027,7 +1027,7 @@
  */
 #define NOZZLE_TO_PROBE_OFFSET \
   {                            \
-    0, -35, -1.50              \
+    0, -35, -1.65              \
   }
 
 // Most probes should stay away from the edges of the bed, but
@@ -1355,8 +1355,8 @@
 
 #define MESH_EDIT_GFX_OVERLAY // Display a graphics overlay while editing the mesh
 
-#define MESH_INSET 1        // Set Mesh bounds as an inset region of the bed
-#define GRID_MAX_POINTS_X 7 // Don't use more than 15 points per axis, implementation limited.
+#define MESH_INSET 1         // Set Mesh bounds as an inset region of the bed
+#define GRID_MAX_POINTS_X 10 // Don't use more than 15 points per axis, implementation limited.
 #define GRID_MAX_POINTS_Y GRID_MAX_POINTS_X
 
 #define UBL_MESH_EDIT_MOVES_Z   // Sophisticated users prefer no movement of nozzle
