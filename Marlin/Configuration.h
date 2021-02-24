@@ -103,13 +103,13 @@
  *
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT 0
+#define SERIAL_PORT -1
 
 /**
  * Select a secondary serial port on the board to use for communication with the host.
  * :[-1, 0, 1, 2, 3, 4, 5, 6, 7]
  */
-#define SERIAL_PORT_2 -1
+#define SERIAL_PORT_2 0
 
 /**
  * This setting determines the communication speed of the printer.
@@ -521,9 +521,9 @@
     50.98, 50.98        \
   }
 #else
-#define DEFAULT_Kp 24.63
-#define DEFAULT_Ki 1.10
-#define DEFAULT_Kd 138.24
+#define DEFAULT_Kp 15.91
+#define DEFAULT_Ki 0.96
+#define DEFAULT_Kd 66.09
 #endif
 #endif // PIDTEMP
 
@@ -2413,16 +2413,16 @@
 #endif
 
 // Support for Adafruit NeoPixel LED driver
-//#define NEOPIXEL_LED
+#define NEOPIXEL_LED
 #if ENABLED(NEOPIXEL_LED)
-#define NEOPIXEL_TYPE NEO_GRBW // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
-#define NEOPIXEL_PIN 4         // LED driving pin
+#define NEOPIXEL_TYPE NEO_GRB // NEO_GRBW / NEO_GRB - four/three channel driver type (defined in Adafruit_NeoPixel.h)
+//#define NEOPIXEL_PIN 4         // LED driving pin
 //#define NEOPIXEL2_TYPE NEOPIXEL_TYPE
 //#define NEOPIXEL2_PIN    5
-#define NEOPIXEL_PIXELS 30      // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
+#define NEOPIXEL_PIXELS 15      // Number of LEDs in the strip. (Longest strip when NEOPIXEL2_SEPARATE is disabled.)
 #define NEOPIXEL_IS_SEQUENTIAL  // Sequential display for temperature change - LED by LED. Disable to change all LEDs at once.
-#define NEOPIXEL_BRIGHTNESS 127 // Initial brightness (0-255)
-//#define NEOPIXEL_STARTUP_TEST  // Cycle through colors at startup
+#define NEOPIXEL_BRIGHTNESS 255 // Initial brightness (0-255)
+//#define NEOPIXEL_STARTUP_TEST   // Cycle through colors at startup
 
 // Support for second Adafruit NeoPixel LED driver controlled with M150 S1 ...
 //#define NEOPIXEL2_SEPARATE
@@ -2468,7 +2468,7 @@
 // If the servo can't reach the requested position, increase it.
 #define SERVO_DELAY \
   {                 \
-    300             \
+    50              \
   }
 
 // Only power servos during movement, otherwise leave off to prevent jitter
