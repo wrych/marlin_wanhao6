@@ -1027,7 +1027,7 @@
  */
 #define NOZZLE_TO_PROBE_OFFSET \
   {                            \
-    0, -35, -1.65              \
+    17, -16.9, -1.65           \
   }
 
 // Most probes should stay away from the edges of the bed, but
@@ -1069,9 +1069,9 @@
  * Example: `M851 Z-5` with a CLEARANCE of 4  =>  9mm from bed to nozzle.
  *     But: `M851 Z+1` with a CLEARANCE of 2  =>  2mm from bed to nozzle.
  */
-#define Z_CLEARANCE_DEPLOY_PROBE 10  // Z Clearance for Deploy/Stow
-#define Z_CLEARANCE_BETWEEN_PROBES 5 // Z Clearance between probe points
-#define Z_CLEARANCE_MULTI_PROBE 5    // Z Clearance between multiple probes
+#define Z_CLEARANCE_DEPLOY_PROBE 5   // Z Clearance for Deploy/Stow
+#define Z_CLEARANCE_BETWEEN_PROBES 3 // Z Clearance between probe points
+#define Z_CLEARANCE_MULTI_PROBE 3    // Z Clearance between multiple probes
 //#define Z_AFTER_PROBING           5 // Z position after probing is done
 
 #define Z_PROBE_LOW_POINT -2 // Farthest distance below the trigger-point to go before stopping
@@ -1226,7 +1226,7 @@
 // After a runout is detected, continue printing this length of filament
 // before executing the runout script. Useful for a sensor at the end of
 // a feed tube. Requires 4 bytes SRAM per sensor, plus 4 bytes overhead.
-#define FILAMENT_RUNOUT_DISTANCE_MM 400
+#define FILAMENT_RUNOUT_DISTANCE_MM 20
 
 #ifdef FILAMENT_RUNOUT_DISTANCE_MM
 // Enable this option to use an encoder disc that toggles the runout pin
